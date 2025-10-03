@@ -5,8 +5,9 @@
 - [x] Criar tarefa com título, descrição, prazo de entrega e status (default = "pendente")
 - [ ] CRUD Tarefa
     - [x] Repository
-    - [ ] DTO + Bean Validation
-    - [ ] Service + ModelMapper
+    - [x] DTO + Bean Validation
+    - [x] configurar ModelMapper
+    - [ ] Service
     - [ ] Controller
 - [ ] Integrar o flyway
 - [ ] Criar Dockerfile
