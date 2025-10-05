@@ -4,13 +4,14 @@ import io.github.rubensrabelo.ms.task.application.exceptions.dto.StandardError;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 
-public abstract class BaseExceptionHandler {
+@Component
+public class ErrorBuilder {
 
-    // Template method — builds a standardized error response
-    protected ResponseEntity<StandardError> buildError(
+    public ResponseEntity<StandardError> build(
             HttpStatus status,
             String error,
             String message,

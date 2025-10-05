@@ -1,7 +1,7 @@
 package io.github.rubensrabelo.ms.task.application.exceptions.handler.validation;
 
 import io.github.rubensrabelo.ms.task.application.exceptions.dto.StandardError;
-import io.github.rubensrabelo.ms.task.application.exceptions.handler.base.BaseExceptionHandler;
+import io.github.rubensrabelo.ms.task.application.exceptions.handler.base.ErrorBuilder;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class ValidationExceptionHandler extends BaseExceptionHandler {
+public class ValidationExceptionHandler extends ErrorBuilder {
+
+    private final ErrorBuilder errorBuilder;
+
+    public ValidationExceptionHandler(ErrorBuilder errorBuilder) {
+        this.errorBuilder = errorBuilder;
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<StandardError> handleValidationErrors(
@@ -29,6 +35,6 @@ public class ValidationExceptionHandler extends BaseExceptionHandler {
 
         String error = "Validation error";
         HttpStatus status = HttpStatus.BAD_REQUEST;
-        return buildError(status, error, message, request);
+        return errorBuilder.build(status, error, message, request);
     }
 }
