@@ -1,10 +1,9 @@
 package io.github.rubensrabelo.ms.task.application;
 
 import io.github.rubensrabelo.ms.task.application.dto.TaskResponseDTO;
-import io.github.rubensrabelo.ms.task.application.exceptions.ResourceNotFoundException;
+import io.github.rubensrabelo.ms.task.application.exceptions.domain.ResourceNotFoundException;
 import io.github.rubensrabelo.ms.task.domain.Task;
 import io.github.rubensrabelo.ms.task.repository.TaskRepository;
-import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

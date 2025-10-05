@@ -1,4 +1,4 @@
-package io.github.rubensrabelo.ms.task.application.exceptions.handler;
+package io.github.rubensrabelo.ms.task.application.exceptions.dto;
 
 import java.time.Instant;
 
