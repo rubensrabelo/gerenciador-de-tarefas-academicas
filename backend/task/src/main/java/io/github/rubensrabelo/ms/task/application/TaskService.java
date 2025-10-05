@@ -1,19 +1,26 @@
 package io.github.rubensrabelo.ms.task.application;
 
+import io.github.rubensrabelo.ms.task.application.dto.TaskCreateDTO;
 import io.github.rubensrabelo.ms.task.application.dto.TaskResponseDTO;
+import io.github.rubensrabelo.ms.task.application.dto.TaskUpdateDTO;
+import io.github.rubensrabelo.ms.task.application.exceptions.domain.DatabaseException;
 import io.github.rubensrabelo.ms.task.application.exceptions.domain.ResourceNotFoundException;
 import io.github.rubensrabelo.ms.task.domain.Task;
 import io.github.rubensrabelo.ms.task.repository.TaskRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import static io.github.rubensrabelo.ms.task.application.utils.TaskMapper.updateTaskFromDTO;
+
 @Service
 public class TaskService {
 
-    private TaskRepository taskRepository;
-    private ModelMapper modelMapper;
+    private final TaskRepository taskRepository;
+    private final ModelMapper modelMapper;
 
     public TaskService(TaskRepository taskRepository, ModelMapper modelMapper) {
         this.taskRepository = taskRepository;
@@ -33,14 +40,27 @@ public class TaskService {
         return modelMapper.map(entity, TaskResponseDTO.class);
     }
 
-    public TaskResponseDTO create() {
-        return null;
+    public TaskResponseDTO create(TaskCreateDTO dtoCreate) {
+        Task entity = modelMapper.map(dtoCreate, Task.class);
+        entity = taskRepository.save(entity);
+        return modelMapper.map(entity, TaskResponseDTO.class);
     }
 
-    public TaskResponseDTO update() {
-        return null;
+    public TaskResponseDTO update(Long id, TaskUpdateDTO dtoUpdate) {
+        Task entity = taskRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Task with id = " + id + " not found."));
+        updateTaskFromDTO(entity, dtoUpdate);
+        entity = taskRepository.save(entity);
+        return modelMapper.map(entity, TaskResponseDTO.class);
     }
 
-    public void delete() {
+    public void delete(Long id) {
+        try {
+            taskRepository.deleteById(taskRepository.count());
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException("Task with id = " + id + " not found.");
+        }  catch (DataIntegrityViolationException e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 }
