@@ -8,8 +8,8 @@
     - [x] DTO + Bean Validation
     - [x] configurar ModelMapper
     - [x] Service
-    - [ ] Controller
-- [ ] Integrar o flyway
+    - [x] Controller
+- [x] Integrar o flyway
 - [ ] Criar Dockerfile
 - [ ] Criar Docker Compose
 - [ ] Testar as rotas no Insomnia

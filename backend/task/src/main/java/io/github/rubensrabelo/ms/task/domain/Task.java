@@ -24,6 +24,8 @@ public class Task implements Serializable {
 
     @Column(length = 200)
     private String description;
+
+    @Column(name = "due_date", nullable = false)
     private LocalDate dueDate;
 
     @Enumerated(EnumType.STRING)
