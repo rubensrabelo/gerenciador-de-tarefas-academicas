@@ -14,7 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import static io.github.rubensrabelo.ms.task.application.utils.TaskMapper.updateTaskFromDTO;
+import static io.github.rubensrabelo.ms.task.application.utils.TaskUpdateMapper.updateTaskFromDTO;
 
 @Service
 public class TaskService {

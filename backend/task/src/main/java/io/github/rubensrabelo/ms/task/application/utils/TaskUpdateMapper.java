@@ -3,8 +3,8 @@ package io.github.rubensrabelo.ms.task.application.utils;
 import io.github.rubensrabelo.ms.task.application.dto.TaskUpdateDTO;
 import io.github.rubensrabelo.ms.task.domain.Task;
 
-public class TaskMapper {
-    private TaskMapper() {
+public class TaskUpdateMapper {
+    private TaskUpdateMapper() {
     }
 
     public static void updateTaskFromDTO(Task entity, TaskUpdateDTO dtoUpdate) {

@@ -7,7 +7,7 @@
     - [x] Repository
     - [x] DTO + Bean Validation
     - [x] configurar ModelMapper
-    - [ ] Service
+    - [x] Service
     - [ ] Controller
 - [ ] Integrar o flyway
 - [ ] Criar Dockerfile
