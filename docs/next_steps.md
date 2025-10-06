@@ -8,11 +8,12 @@
 - [x] Criar Eureka Server
 - [x] Criar Api Gateway
 - [x] Testar as rotas no Insomnia
+- [x] Adicionar CORS
 
 ---
 
 ## Frontend
-### Meta
+### Meta - 07/10 a 11/10
 - [ ] Visualizar apenas uma tarefa
 - [ ] criar tarefas
 - [ ] editar tarefas
