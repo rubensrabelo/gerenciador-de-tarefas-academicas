@@ -1,0 +1,14 @@
+services:
+  eurekaserver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: eurekaserver
+    ports:
+      - "8761:8761"
+    networks:
+      - ms-network
+
+networks:
+  ms-network:
+    external: false

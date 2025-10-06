@@ -5,7 +5,7 @@
 - [x] Criar microsserviço de tarefas
 
 ### Meta - 06/10 a 07/10
-- [ ] Criar Eureka Server
+- [x] Criar Eureka Server
 - [ ] Criar Api Gateway
 - [ ] Testar as rotas no Insomnia
 
