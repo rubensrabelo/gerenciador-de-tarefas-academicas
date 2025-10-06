@@ -6,7 +6,7 @@
 
 ### Meta - 06/10 a 07/10
 - [x] Criar Eureka Server
-- [ ] Criar Api Gateway
+- [x] Criar Api Gateway
 - [ ] Testar as rotas no Insomnia
 
 ---
