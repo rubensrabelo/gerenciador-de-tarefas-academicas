@@ -1,11 +1,12 @@
 services:
-  eurekaserver:
+  gateway:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: eurekaserver
+    container_name: gateway
+    hostname: gateway
     ports:
-      - "8761:8761"
+      - "8080:8080"
     networks:
       - ms-network
 

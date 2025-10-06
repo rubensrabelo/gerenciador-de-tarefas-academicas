@@ -23,7 +23,7 @@ services:
 
 networks:
   ms-network:
-    external: false
+    external: true
 
 volumes:
   postgres_task_data:
