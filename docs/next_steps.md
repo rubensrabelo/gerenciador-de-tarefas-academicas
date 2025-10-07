@@ -14,7 +14,7 @@
 
 ## Frontend
 ### Meta - 07/10 a 11/10
-- [ ] criar tarefas
+- [ ] criar tarefas - Falta testar
 - [ ] Visualizar as tarefas agendadas
 - [ ] Visualizar apenas uma tarefa agendada
 - [ ] editar tarefas
