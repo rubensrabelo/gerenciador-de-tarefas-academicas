@@ -33,3 +33,4 @@
 ### Meta
 - [ ] Template Method
 - [ ] 9 Tips for Containerizing Your Spring Boot Code
+- [ ] Ler sobre enum em TS
