@@ -33,7 +33,7 @@ public class TaskController {
             @RequestParam(value = "direction", defaultValue = "asc") String direction
     ) {
         Direction sortDirection = direction.equalsIgnoreCase("asc") ? Direction.ASC : Direction.DESC;
-        Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, "id"));
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, "dueDate"));
         Page<TaskResponseDTO> dto = taskService.findAll(pageable);
         return ResponseEntity.ok().body(dto);
     }
