@@ -1,7 +1,9 @@
 import { useState } from "react";
+
+import styles from "./CreateTask.module.css";
+
 import type { TaskCreate } from "../../api/models/interface/task/task-create.interface";
 import { create } from "../../api/services/task/task-create.service";
-import styles from "./CreateTask.module.css";
 import { TaskError } from "../../api/services/errors/task.error";
 
 function CreateTask() {

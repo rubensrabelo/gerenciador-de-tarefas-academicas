@@ -14,16 +14,16 @@ interface PaginatedResponse<T> {
 interface GetAllTasksParams {
     page?: number;
     size?: number;
-    sort?: string;
+    direction?: string;
 }
 
 export async function getAll({
     page = 0,
     size = 10,
-    sort = "desc",
+    direction = "desc",
 }: GetAllTasksParams = {}): Promise<PaginatedResponse<TaskResponse>> {
     const response = await fetch(
-        `${ENV.API_BASE_URL}/tasks?page=${page}&size=${size}&sort=${sort}`,
+        `${ENV.API_BASE_URL}/tasks?page=${page}&size=${size}&sort=${direction}`,
         {
             method: "GET",
             headers: { "Content-Type": "application/json" },
