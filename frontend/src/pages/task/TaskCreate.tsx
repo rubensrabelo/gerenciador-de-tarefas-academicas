@@ -26,9 +26,7 @@ function CreateTask() {
         setError(null);
 
         try {
-            const task = await create(formData);
-            console.log("Task created:", task);
-            alert("Task created successfully!");
+            await create(formData);
             setFormData({ title: "", description: "", dueDate: "" });
         } catch (err: any) {
             if (err instanceof TaskError) {
