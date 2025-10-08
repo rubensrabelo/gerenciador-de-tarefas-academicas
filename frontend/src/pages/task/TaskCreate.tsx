@@ -5,6 +5,7 @@ import styles from "./CreateTask.module.css";
 import type { TaskCreate } from "../../api/models/interface/task/task-create.interface";
 import { create } from "../../api/services/task/task-create.service";
 import { TaskError } from "../../api/services/errors/task.error";
+import { useNavigate } from "react-router-dom";
 
 function CreateTask() {
     const [formData, setFormData] = useState<TaskCreate>({
@@ -14,6 +15,8 @@ function CreateTask() {
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+
+    const navigate = useNavigate();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({
@@ -30,6 +33,8 @@ function CreateTask() {
         try {
             await create(formData);
             setFormData({ title: "", description: "", dueDate: "" });
+
+            navigate("/tasks");
         } catch (err: any) {
             if (err instanceof TaskError) {
                 setError(err.message);

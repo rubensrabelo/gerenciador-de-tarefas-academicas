@@ -50,6 +50,67 @@
   margin-top: 24px;
 }
 
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.createBtn {
+  background: #0275d8;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s ease;
+}
+
+.createBtn:hover {
+  background: #a9cce3;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  gap: 16px;
+}
+
+.pagination button {
+  background: #0275d8;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  flex-shrink: 0;
+  width: auto;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #025aa5;
+  transform: translateY(-1px);
+}
+
+.pagination button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  flex: 1;
+  text-align: center;
+  font-weight: 500;
+}
+
+
 button {
   background: #0275d8;
   color: white;
