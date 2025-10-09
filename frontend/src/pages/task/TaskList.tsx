@@ -69,7 +69,11 @@ function TaskList() {
 
       <ul className={styles.taskList}>
         {tasks.map((task) => (
-          <li key={task.id} className={styles.taskCard}>
+          <li
+            key={task.id}
+            className={styles.taskCard}
+            onClick={() => navigate(`/tasks/${task.id}`)}
+          >
             <h3>{task.title}</h3>
             <p>{task.description || "No description"}</p>
             <small>Due date: {task.dueDate}</small>
