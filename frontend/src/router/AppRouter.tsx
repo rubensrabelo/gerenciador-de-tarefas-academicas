@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import CreateTask from "../pages/task/TaskCreate";
 import TaskList from "../pages/task/TaskList";
 import TaskDetail from "../pages/task/TaskDetail";
+import TaskUpdate from "../pages/task/TaskUpdate";
 
 function AppRouter() {
   return (
@@ -11,6 +12,7 @@ function AppRouter() {
         <Route path="/tasks" element={<TaskList />} />
         <Route path="/tasks/create" element={<CreateTask />} />
         <Route path="/tasks/:id" element={<TaskDetail />} />
+        <Route path="/tasks/edit/:id" element={<TaskUpdate />} />
       </Routes>
     </BrowserRouter>
   );

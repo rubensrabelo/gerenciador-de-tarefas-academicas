@@ -138,6 +138,36 @@ button:disabled {
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }
 
+.cardActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.editBtn {
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.deleteBtn {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.taskInfo {
+  cursor: pointer;
+}
+
 .error {
   color: red;
   font-weight: bold;

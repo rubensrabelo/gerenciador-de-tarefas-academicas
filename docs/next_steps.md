@@ -13,12 +13,12 @@
 ---
 
 ## Frontend
-### Meta - 07/10 a 11/10
+### Meta - 07/10 a 11/10 (finalizei em 09/10)
 - [x] criar tarefas - Falta testar
 - [x] Visualizar as tarefas agendadas
-- [ ] Visualizar apenas uma tarefa agendada - Falta testar
-- [ ] editar tarefas
-- [ ] excluir tarefas
+- [x] Visualizar apenas uma tarefa agendada
+- [x] editar tarefas
+- [x] excluir tarefas
 
 ---
 

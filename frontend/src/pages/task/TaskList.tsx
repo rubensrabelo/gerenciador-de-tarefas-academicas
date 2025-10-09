@@ -6,6 +6,7 @@ import styles from "./TaskList.module.css";
 import type { TaskResponse } from "../../api/models/interface/task/task-response.interface";
 import { TaskError } from "../../api/services/errors/task.error";
 import { getAll } from "../../api/services/task/task-find-all.service";
+import { deleteTask } from "../../api/services/task/task-delete.service";
 
 function TaskList() {
   const [tasks, setTasks] = useState<TaskResponse[]>([]);
@@ -24,7 +25,6 @@ function TaskList() {
       const data = await getAll({ page: currentPage, size: 5, direction: "desc" });
       setTasks(data.content);
       setTotalPages(data.totalPages);
-      console.log(totalPages);
       setPage(data.number);
     } catch (err: any) {
       if (err instanceof TaskError) {
@@ -53,6 +53,20 @@ function TaskList() {
     navigate("/tasks/create");
   };
 
+  const handleEdit = (id: number) => {
+    navigate(`/tasks/edit/${id}`);
+  };
+
+  const handleDelete = async (id: number) => {
+    if (!confirm("Are you sure you want to delete this task?")) return;
+    try {
+      await deleteTask(id);
+      loadTasks(page); // recarrega a lista
+    } catch (err: any) {
+      alert("Failed to delete task.");
+    }
+  };
+
   return (
     <div className={styles.container}>
       <h1>All Tasks</h1>
@@ -69,17 +83,35 @@ function TaskList() {
 
       <ul className={styles.taskList}>
         {tasks.map((task) => (
-          <li
-            key={task.id}
-            className={styles.taskCard}
-            onClick={() => navigate(`/tasks/${task.id}`)}
-          >
-            <h3>{task.title}</h3>
-            <p>{task.description || "No description"}</p>
-            <small>Due date: {task.dueDate}</small>
-            <span className={`${styles.status} ${styles[task.status.toLowerCase()]}`}>
-              {task.status}
-            </span>
+          <li key={task.id} className={styles.taskCard}>
+            <div
+              className={styles.taskInfo}
+              onClick={() => navigate(`/tasks/${task.id}`)}
+            >
+              <h3>{task.title}</h3>
+              <p>{task.description || "No description"}</p>
+              <small>Due date: {task.dueDate}</small>
+              <span
+                className={`${styles.status} ${styles[task.status.toLowerCase()]}`}
+              >
+                {task.status}
+              </span>
+            </div>
+
+            <div className={styles.cardActions}>
+              <button
+                className={styles.editBtn}
+                onClick={() => handleEdit(task.id)}
+              >
+                ✏️
+              </button>
+              <button
+                className={styles.deleteBtn}
+                onClick={() => handleDelete(task.id)}
+              >
+                🗑️
+              </button>
+            </div>
           </li>
         ))}
       </ul>
@@ -89,7 +121,9 @@ function TaskList() {
           <button onClick={handlePrevPage} disabled={page === 0}>
             ← Prev
           </button>
-          <span>Page {page + 1} of {totalPages}</span>
+          <span>
+            Page {page + 1} of {totalPages}
+          </span>
           <button onClick={handleNextPage} disabled={page + 1 >= totalPages}>
             Next →
           </button>
