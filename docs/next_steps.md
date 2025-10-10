@@ -23,9 +23,8 @@
 ---
 
 ## Testes
-### Meta
-- [ ] Criar teste unitário
-- [ ] Criar teste de integração
+### Meta 10/10 a 12/10
+- [ ] Criar teste unitário no ms Task
 
 ---
 
