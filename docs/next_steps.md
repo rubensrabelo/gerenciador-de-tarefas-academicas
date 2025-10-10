@@ -25,6 +25,7 @@
 ## Testes
 ### Meta 10/10 a 12/10
 - [ ] Criar teste unitário no ms Task
+- [ ] Criar teste integração no ms Task ?
 
 ---
 
