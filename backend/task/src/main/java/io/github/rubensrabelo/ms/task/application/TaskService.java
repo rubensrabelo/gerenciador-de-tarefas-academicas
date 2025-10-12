@@ -56,7 +56,7 @@ public class TaskService {
 
     public void delete(Long id) {
         try {
-            taskRepository.deleteById(taskRepository.count());
+            taskRepository.deleteById(id);
         } catch (EmptyResultDataAccessException e) {
             throw new ResourceNotFoundException("Task with id = " + id + " not found.");
         }  catch (DataIntegrityViolationException e) {
