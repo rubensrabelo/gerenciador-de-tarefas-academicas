@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -26,7 +27,7 @@ public class Task implements Serializable {
     private String description;
 
     @Column(name = "due_date", nullable = false)
-    private LocalDate dueDate;
+    private LocalDateTime dueDate;
 
     @Enumerated(EnumType.STRING)
     private TaskStatus status;
@@ -34,7 +35,7 @@ public class Task implements Serializable {
     public Task() {
     }
 
-    public Task(String title, String description, LocalDate dueDate) {
+    public Task(String title, String description, LocalDateTime dueDate) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
@@ -69,11 +70,11 @@ public class Task implements Serializable {
         this.description = description;
     }
 
-    public LocalDate getDueDate() {
+    public LocalDateTime getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDate dueDate) {
+    public void setDueDate(LocalDateTime dueDate) {
         this.dueDate = dueDate;
     }
 

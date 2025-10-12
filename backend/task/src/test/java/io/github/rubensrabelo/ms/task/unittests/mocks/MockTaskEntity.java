@@ -4,6 +4,7 @@ import io.github.rubensrabelo.ms.task.domain.Task;
 import io.github.rubensrabelo.ms.task.domain.enums.TaskStatus;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class MockTaskEntity {
         Task entity = new Task(
                 "Title " + id,
                 "Description " + id,
-                LocalDate.now()
+                LocalDateTime.now()
         );
         entity.setId(id.longValue());
         entity.setStatus(chooseTaskStatus((id % 5) + 1));

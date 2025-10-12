@@ -27,6 +27,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -190,7 +191,7 @@ public class TaskServiceTest {
         TaskUpdateDTO dtoUpdate = new TaskUpdateDTO(
                 "Updated Task",
                 "Description about Updated Task",
-                LocalDate.now(),
+                LocalDateTime.now(),
                 TaskStatus.PENDING
         );
 

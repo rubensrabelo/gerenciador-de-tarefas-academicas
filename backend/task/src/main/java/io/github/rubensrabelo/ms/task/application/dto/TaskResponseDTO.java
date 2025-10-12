@@ -5,6 +5,7 @@ import io.github.rubensrabelo.ms.task.domain.enums.TaskStatus;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class TaskResponseDTO implements Serializable {
@@ -15,13 +16,13 @@ public class TaskResponseDTO implements Serializable {
     private Long id;
     private String title;
     private String description;
-    private LocalDate dueDate;
+    private LocalDateTime dueDate;
     private TaskStatus status;
 
     public TaskResponseDTO() {
     }
 
-    public TaskResponseDTO(String title, String description, LocalDate dueDate) {
+    public TaskResponseDTO(String title, String description, LocalDateTime dueDate) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
@@ -51,11 +52,11 @@ public class TaskResponseDTO implements Serializable {
         this.description = description;
     }
 
-    public LocalDate getDueDate() {
+    public LocalDateTime getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDate dueDate) {
+    public void setDueDate(LocalDateTime dueDate) {
         this.dueDate = dueDate;
     }
 

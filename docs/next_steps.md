@@ -1,8 +1,8 @@
 # Próximos Passos
 
 ## Backend
-### Meta
-- [ ] Mudar de LocalDate para LocalDateTime
+### Meta de 12/10 a 12/10
+- [x] Mudar de LocalDate para LocalDateTime - Falta testar a mudança para o horário local, ainda está no fuso horario utc
 
 ---
 
