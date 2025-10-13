@@ -129,8 +129,14 @@ public class TaskServiceTest {
 
     @Test
     void create() {
+        LocalDateTime fixedDueDate = LocalDateTime.of(2025, 10, 12, 15, 0);
+
         TaskResponseDTO dtoResponse = inputDTO.mockDTO(1);
+        dtoResponse.setDueDate(fixedDueDate);
+
         Task persisted = inputEntity.mockEntity(1);
+        persisted.setDueDate(fixedDueDate);
+
         TaskCreateDTO dtoCreate = new TaskCreateDTO(
                 dtoResponse.getTitle(),
                 dtoResponse.getDescription(),

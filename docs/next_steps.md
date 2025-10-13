@@ -13,8 +13,8 @@
 ---
 
 ## Testes
-### Meta
-- [ ] Mudar o teste de unidade para o LocalDatetime
+### Meta - 13/10 a 13/10
+- [x] Mudar o teste de unidade para o LocalDatetime
 
 ---
 
