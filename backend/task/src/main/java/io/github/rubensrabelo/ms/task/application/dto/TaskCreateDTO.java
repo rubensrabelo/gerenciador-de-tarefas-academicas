@@ -18,7 +18,6 @@ public class TaskCreateDTO {
     private String description;
 
     @FutureOrPresent(message = "Due date cannot be in the past")
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "America/Sao_Paulo")
     private LocalDateTime dueDate;
 
     public TaskCreateDTO() {
