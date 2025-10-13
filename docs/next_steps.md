@@ -1,20 +1,19 @@
 # Próximos Passos
 
 ## Backend
-### Meta de 12/10 a 12/10 (13/10)
-- [x] Mudar de LocalDate para LocalDateTime
+### Meta - 13/10 a 13/10
+- [ ] Planejamento
 
 ---
 
 ## Frontend
 ### Meta
-- [ ] Alterar a mudança para o tipo de LocalDateTime
 
 ---
 
 ## Testes
 ### Meta - 13/10 a 13/10
-- [x] Mudar o teste de unidade para o LocalDatetime
+
 
 ---
 

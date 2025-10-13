@@ -73,7 +73,7 @@ function CreateTask() {
                 <div>
                     <label>Due Date</label>
                     <input
-                        type="date"
+                        type="datetime-local"
                         name="dueDate"
                         value={formData.dueDate}
                         onChange={handleChange}
