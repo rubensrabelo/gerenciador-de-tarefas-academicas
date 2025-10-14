@@ -1,0 +1,77 @@
+services:
+  eurekaserver:
+    build:
+      context: ./eurekaserver
+      dockerfile: Dockerfile
+    container_name: eurekaserver
+    hostname: eurekaserver
+    ports:
+      - "8761:8761"
+    networks:
+      - ms-network
+
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    container_name: gateway
+    hostname: gateway
+    depends_on:
+      - eurekaserver
+    environment:
+      - TZ=America/Sao_Paulo
+    ports:
+      - "8080:8080"
+    networks:
+      - ms-network
+
+  mstask:
+    build:
+      context: ./task
+      dockerfile: Dockerfile
+    container_name: mstask
+    hostname: mstask
+    depends_on:
+      - eurekaserver
+      - db
+      - rabbitmq
+    environment:
+      - TZ=America/Sao_Paulo
+    networks:
+      - ms-network
+
+  db:
+    image: postgres:15-alpine
+    container_name: postgres-mstask
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: db_task
+      TZ: America/Sao_Paulo
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_task_data:/var/lib/postgresql/data
+    networks:
+      - ms-network
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    hostname: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+      TZ: America/Sao_Paulo
+    ports:
+      - "5672:5672"   # porta padrão de mensagens
+      - "15672:15672" # painel de controle web
+    networks:
+      - ms-network
+
+networks:
+  ms-network:
+    name: ms-network
+
+volumes:
+  postgres_task_data:

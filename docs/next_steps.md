@@ -1,8 +1,15 @@
 # Próximos Passos
 
 ## Backend
-### Meta - 13/10 a 13/10
-- [ ] Planejamento
+### Meta - 14/10 a 16/10
+- [ ] Atualizar os status com o RabbitMQ
+
+### Meta - 
+- [ ] Observabilidade/logs
+- [ ] Métricas/tracing
+- [ ] Resiliência
+- [ ] Segurança
+- [ ] Automação
 
 ---
 
@@ -12,7 +19,7 @@
 ---
 
 ## Testes
-### Meta - 13/10 a 13/10
+### Meta
 
 
 ---
@@ -22,4 +29,4 @@
 - [ ] Template Method
 - [ ] 9 Tips for Containerizing Your Spring Boot Code
 - [ ] Ler sobre enum em TS
-= [ ] Ler sobre microsserviços
+- [ ] Ler sobre microsserviços
