@@ -1,31 +1,38 @@
 package io.github.rubensrabelo.ms.task.config;
 
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfig {
 
-    public static final String TASK_STATUS_QUEUE = "task.status.queue";
-    public static final String TASK_STATUS_EXCHANGE = "task.status.exchange";
-    public static final String TASK_STATUS_ROUTING_KEY = "task.status.#";
+    public static final String DELAY_QUEUE = "task_delay_queue";
+    public static final String OVERDUE_QUEUE = "task_overdue_queue";
+    public static final String DLX_EXCHANGE = "task_dlx_exchange";
 
     @Bean
-    public TopicExchange getTaskStatusExchange() {
-        return new TopicExchange(TASK_STATUS_EXCHANGE);
+    public Queue delayQueue() {
+        return QueueBuilder.durable(DELAY_QUEUE)
+                .withArgument("x-dead-letter-exchange", DLX_EXCHANGE)
+                .withArgument("x-dead-letter-routing-key", OVERDUE_QUEUE)
+                .build();
     }
 
     @Bean
-    public Queue getTaskStatusQueue() {
-        return new Queue(TASK_STATUS_QUEUE, true);
+    public Queue overdueQueue() {
+        return QueueBuilder.durable(OVERDUE_QUEUE).build();
     }
 
     @Bean
-    public Binding getTaskStatusBinding(Queue taskStatusQueue, TopicExchange taskStatusExchange) {
-        return BindingBuilder.bind(taskStatusQueue).to(taskStatusExchange).with(TASK_STATUS_ROUTING_KEY);
+    public DirectExchange dlxExchange() {
+        return new DirectExchange(DLX_EXCHANGE);
+    }
+
+    @Bean
+    public Binding binding() {
+        return BindingBuilder.bind(overdueQueue())
+                .to(dlxExchange())
+                .with(OVERDUE_QUEUE);
     }
 }
