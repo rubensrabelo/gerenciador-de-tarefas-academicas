@@ -1,6 +1,6 @@
 spring:
   application:
-    name: mstask
+    name: msworker
   datasource:
     url: jdbc:postgresql://db:5432/db_task
     username: postgres
@@ -30,9 +30,3 @@ eureka:
     fetch-registry: true
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-
-app:
-  rabbitmq:
-    exchange: task.exchange
-    queue: task.overdue.queue
-    routing-key: task.overdue

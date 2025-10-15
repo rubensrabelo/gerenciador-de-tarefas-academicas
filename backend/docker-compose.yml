@@ -39,6 +39,21 @@ services:
       - TZ=America/Sao_Paulo
     networks:
       - ms-network
+  
+  msworker:
+    build:
+      context: ./task-overdue-checker
+      dockerfile: Dockerfile
+    container_name: msworker
+    hostname: msworker
+    depends_on:
+      - eurekaserver
+      - db
+      - rabbitmq
+    environment:
+      - TZ=America/Sao_Paulo
+    networks:
+      - ms-network
 
   db:
     image: postgres:15-alpine
@@ -71,7 +86,7 @@ services:
 
 networks:
   ms-network:
-    name: ms-network
+    driver: bridge
 
 volumes:
   postgres_task_data:
