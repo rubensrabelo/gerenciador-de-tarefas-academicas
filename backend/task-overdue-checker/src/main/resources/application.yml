@@ -22,11 +22,11 @@ spring:
 server:
   port: 0
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://eurekaserver:eurekaserver@eurekaserver:8761/eureka/
-    register-with-eureka: true
-    fetch-registry: true
-  instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://eurekaserver:eurekaserver@eurekaserver:8761/eureka/
+#    register-with-eureka: true
+#    fetch-registry: true
+#  instance:
+#    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
