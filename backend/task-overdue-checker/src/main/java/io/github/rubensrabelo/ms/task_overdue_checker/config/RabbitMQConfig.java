@@ -1,5 +1,7 @@
 package io.github.rubensrabelo.ms.task_overdue_checker.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.QueueBuilder;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
@@ -11,8 +13,11 @@ public class RabbitMQConfig {
 
     public static final String OVERDUE_QUEUE = "task_overdue_queue";
 
+
     @Bean
     public Jackson2JsonMessageConverter messageConverter() {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
         return new Jackson2JsonMessageConverter();
     }
 

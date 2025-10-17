@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Service
 public class TaskPublisherService {
@@ -18,7 +19,10 @@ public class TaskPublisherService {
     }
 
     public void sendTaskDelayQueue(Task task) {
-        long delayMs = Duration.between(task.getDueDate(), LocalDateTime.now()).toMillis();
+        ZoneId zone = ZoneId.of("America/Sao_Paulo");
+        LocalDateTime now = LocalDateTime.now(zone);
+
+        long delayMs = Duration.between(now, task.getDueDate()).toMillis();
         if (delayMs < 0) delayMs = 0;
 
         long finalDelayMs = delayMs;
