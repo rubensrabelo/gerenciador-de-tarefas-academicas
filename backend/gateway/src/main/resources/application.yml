@@ -23,3 +23,9 @@ eureka:
     hostname: localhost
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
     prefer-ip-address: false
+
+logging:
+  level:
+    root: INFO
+  pattern:
+    console: '{"timestamp":"%d{yyyy-MM-dd HH:mm:ss}","level":"%p","service":"${spring.application.name}","message":"%m"}%n'

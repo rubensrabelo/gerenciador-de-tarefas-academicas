@@ -6,7 +6,7 @@
     - [x] Consolidar sua estrutura de pastas
     - [x] Configurar o docker-compose.yml principal
     - [x] Configurar os arquivos do Loki e Promtail
-    - [ ] Ajustar os logs dos microsserviços
+    - [x] Ajustar os logs dos microsserviços
     - [ ] Subir tudo
     - [ ] Visualizar os logs no Grafana
     - [ ] (Opcional) Manter os docker-compose individuais

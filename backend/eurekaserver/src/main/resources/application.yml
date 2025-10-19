@@ -12,3 +12,9 @@ eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
+
+logging:
+  level:
+    root: INFO
+  pattern:
+    console: '{"timestamp":"%d{yyyy-MM-dd HH:mm:ss}","level":"%p","service":"${spring.application.name}","message":"%m"}%n'
