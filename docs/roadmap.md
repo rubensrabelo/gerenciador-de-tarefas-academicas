@@ -14,8 +14,8 @@
 ## Fase 2 - Infraestrutura e Observabilidade
 > Objetivo: garantir que o sistema possa ser monitorado, depurado e analisado facilmente.
 
-- [ ] Criar `docker-compose.yml` principal unificando todos os microsserviços
-- [ ] Configurar rede única (`app-network`) entre serviços
+- [x] Criar `docker-compose.yml` principal unificando todos os microsserviços
+- [x] Configurar rede única (`app-network`) entre serviços
 - [ ] Implementar stack de logs centralizados (Loki + Promtail + Grafana)
 - [ ] Padronizar formato de logs JSON nos microsserviços (via Logback)
 - [ ] Adicionar métricas de aplicação com Spring Boot Actuator

@@ -1,11 +1,15 @@
 # Próximos Passos
 
 ## Backend
-### Meta - 14/10 a 16/10
-- [ ] Atualizar os status com o RabbitMQ
-
 ### Meta - 
 - [ ] Observabilidade/logs
+    - [x] Consolidar sua estrutura de pastas
+    - [x] Configurar o docker-compose.yml principal
+    - [x] Configurar os arquivos do Loki e Promtail
+    - [ ] Ajustar os logs dos microsserviços
+    - [ ] Subir tudo
+    - [ ] Visualizar os logs no Grafana
+    - [ ] (Opcional) Manter os docker-compose individuais
 - [ ] Métricas/tracing
 - [ ] Resiliência
 - [ ] Segurança
