@@ -7,9 +7,17 @@
     - [x] Configurar o docker-compose.yml principal
     - [x] Configurar os arquivos do Loki e Promtail
     - [x] Ajustar os logs dos microsserviços
-    - [ ] Subir tudo
-    - [ ] Visualizar os logs no Grafana
-    - [ ] (Opcional) Manter os docker-compose individuais
+    - [x] Subir tudo
+    - [x] Visualizar os logs no Grafana
+    - [x] (Opcional) Manter os docker-compose individuais
+- [ ] Métricas e health checks (Actuator + Prometheus)
+    - [x] Dependências (adicionar ao pom.xml do service)
+    - [x] application.yml do serviço (task-service)
+    - [X] Dockerfile do serviço (expor a porta do Actuator)
+    - [x] Docker Compose — configurar hostname e mapear só a porta do Actuator
+    - [x] prometheus.yml (configurar scrape do Actuator)
+    - [ ] Build e subir os containers
+    - [ ] Testes / verificações
 - [ ] Métricas/tracing
 - [ ] Resiliência
 - [ ] Segurança

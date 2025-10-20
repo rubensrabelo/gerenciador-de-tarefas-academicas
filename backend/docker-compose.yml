@@ -57,6 +57,8 @@ services:
       - rabbitmq
     environment:
       - TZ=America/Sao_Paulo
+    ports:
+      - "8085:8085"
     networks:
       - ms-network
   
