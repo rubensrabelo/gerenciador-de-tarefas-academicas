@@ -13,6 +13,17 @@ spring:
 server:
   port: 8080
 
+management:
+  server:
+    port: 8080
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      show-details: always
+
 eureka:
   client:
     fetch-registry: true
@@ -23,6 +34,8 @@ eureka:
     hostname: localhost
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
     prefer-ip-address: false
+    health-check-url: http://mscloudgateway:8080/actuator/health
+    status-page-url: http://mscloudgateway:8080/actuator/info
 
 logging:
   level:

@@ -24,6 +24,17 @@ spring:
 server:
   port: 0
 
+management:
+  server:
+    port: 8086
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      show-details: always
+
 logging:
   level:
     root: INFO

@@ -1,4 +1,4 @@
-package io.github.rubensrabelo.ms.task_overdue_checker.application.rabbitmq;
+package io.github.rubensrabelo.ms.task_overdue_checker.application.rabbitmq.listener;
 
 import io.github.rubensrabelo.ms.task_overdue_checker.application.TaskService;
 import io.github.rubensrabelo.ms.task_overdue_checker.config.RabbitMQConfig;
