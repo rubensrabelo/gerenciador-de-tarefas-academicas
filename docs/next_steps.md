@@ -16,8 +16,8 @@
     - [X] Dockerfile do serviço (expor a porta do Actuator)
     - [x] Docker Compose — configurar hostname e mapear só a porta do Actuator
     - [x] prometheus.yml (configurar scrape do Actuator)
-    - [ ] Build e subir os containers
-    - [ ] Testes / verificações
+    - [x] Build e subir os containers
+    - [x] Testes / verificações
 - [ ] Métricas/tracing
 - [ ] Resiliência
 - [ ] Segurança

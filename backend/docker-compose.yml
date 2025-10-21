@@ -128,6 +128,17 @@ services:
     volumes:
     - grafana-data:/var/lib/grafana
 
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - ms-network
+    depends_on:
+      - mstask
 
 # NETWORKS
 networks:
