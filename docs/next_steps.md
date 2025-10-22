@@ -3,7 +3,7 @@
 ## Backend
 ### Meta - 
 - [x] Observabilidade/logs
-- [x] Métricas e health checks (Actuator + Prometheus)
+- [x] Métricas e health checks (Actuator + Prometheus) - Depois eu estudo para testar
 - [ ] Métricas/tracing
 - [ ] Resiliência
 - [ ] Segurança
