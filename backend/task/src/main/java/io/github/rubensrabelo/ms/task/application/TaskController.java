@@ -1,8 +1,12 @@
 package io.github.rubensrabelo.ms.task.application;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import io.github.rubensrabelo.ms.task.application.dto.TaskCreateDTO;
 import io.github.rubensrabelo.ms.task.application.dto.TaskResponseDTO;
 import io.github.rubensrabelo.ms.task.application.dto.TaskUpdateDTO;
+import io.github.rubensrabelo.ms.task.application.resilience4j.NotificationFallbackHandler;
+import io.github.rubensrabelo.ms.task.infra.feign.NotificationClient;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,9 +25,17 @@ import java.net.URI;
 public class TaskController {
 
     private final TaskService taskService;
+    private final NotificationClient notificationClient;
+    private final NotificationFallbackHandler fallbackHandler;
 
-    public TaskController(TaskService taskService) {
+    public TaskController(
+            TaskService taskService,
+            NotificationClient notificationClient,
+            NotificationFallbackHandler fallbackHandler
+            ) {
         this.taskService = taskService;
+        this.notificationClient = notificationClient;
+        this.fallbackHandler = fallbackHandler;
     }
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -50,12 +62,19 @@ public class TaskController {
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE}
     )
+    @CircuitBreaker(name = "msnotification", fallbackMethod = "fallback")
+    @Retry(name = "msnotification")
     public ResponseEntity<TaskResponseDTO> create(
-            @Valid @RequestBody TaskCreateDTO taskCreateDTO
+            @Valid @RequestBody TaskCreateDTO taskCreateDTO,
+            @RequestParam String email
     ) {
         TaskResponseDTO dto = taskService.create(taskCreateDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(dto.getId()).toUri();
+        notificationClient.send(
+                "New task created: " + dto.getTitle(),
+                email
+        );
         return ResponseEntity.created(uri).body(dto);
     }
 
@@ -78,5 +97,10 @@ public class TaskController {
     ) {
         taskService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    public ResponseEntity<TaskResponseDTO> fallback(TaskResponseDTO dto, String email, Throwable t) {
+        String msg = fallbackHandler.handle(dto.getTitle(), email, t);
+        return ResponseEntity.internalServerError().body(dto);
     }
 }

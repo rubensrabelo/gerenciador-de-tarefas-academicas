@@ -56,6 +56,21 @@ app:
     queue: task.overdue.queue
     routing-key: task.overdue
 
+resilience4j:
+  circuitbreaker:
+    instances:
+      notificationService:
+        slidingWindowSize: 5
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+  retry:
+    instances:
+      notificationService:
+        maxAttempts: 3
+        waitDuration: 2s
+
 logging:
   level:
     root: INFO
