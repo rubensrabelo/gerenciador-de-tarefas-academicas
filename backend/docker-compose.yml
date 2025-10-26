@@ -62,12 +62,18 @@ services:
     networks:
       - ms-network
 
-  notification-service:
-    build: ./notification
+  msnotification:
+    build:
+      context: ./notification
+      dockerfile: Dockerfile
+    container_name: msnotification
+    hostname: msnotification
     depends_on:
-      - eureka-server
+      - eurekaserver
     env_file:
       - ./notification/.env
+    networks:
+      - ms-network
   
   msworker:
     build:
