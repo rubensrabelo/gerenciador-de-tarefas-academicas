@@ -61,6 +61,11 @@ services:
       - "8085:8085"
     networks:
       - ms-network
+
+  notification-service:
+    build: ./notification
+    depends_on:
+      - eureka-server
   
   msworker:
     build:
