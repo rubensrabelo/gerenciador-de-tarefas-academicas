@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: msnotification
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: seu-email@aqui.com
+    password: senha-aqui
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eurekaserver:eurekaserver@eurekaserver:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
