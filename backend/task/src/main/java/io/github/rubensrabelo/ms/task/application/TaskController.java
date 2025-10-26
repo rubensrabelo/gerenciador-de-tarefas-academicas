@@ -8,6 +8,7 @@ import io.github.rubensrabelo.ms.task.application.dto.TaskUpdateDTO;
 import io.github.rubensrabelo.ms.task.application.resilience4j.NotificationFallbackHandler;
 import io.github.rubensrabelo.ms.task.infra.feign.NotificationClient;
 import jakarta.validation.Valid;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -27,15 +28,17 @@ public class TaskController {
     private final TaskService taskService;
     private final NotificationClient notificationClient;
     private final NotificationFallbackHandler fallbackHandler;
+    private final ModelMapper modelMapper;
 
     public TaskController(
             TaskService taskService,
             NotificationClient notificationClient,
-            NotificationFallbackHandler fallbackHandler
-            ) {
+            NotificationFallbackHandler fallbackHandler,
+            ModelMapper modelMapper) {
         this.taskService = taskService;
         this.notificationClient = notificationClient;
         this.fallbackHandler = fallbackHandler;
+        this.modelMapper = modelMapper;
     }
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -99,8 +102,9 @@ public class TaskController {
         return ResponseEntity.noContent().build();
     }
 
-    public ResponseEntity<TaskResponseDTO> fallback(TaskResponseDTO dto, String email, Throwable t) {
-        String msg = fallbackHandler.handle(dto.getTitle(), email, t);
-        return ResponseEntity.internalServerError().body(dto);
+    public ResponseEntity<TaskResponseDTO> fallback(TaskCreateDTO dtoCreate, String email, Throwable t) {
+        TaskResponseDTO dtoResponse = modelMapper.map(dtoCreate, TaskResponseDTO.class);
+        String msg = fallbackHandler.handle(dtoCreate.getTitle(), email, t);
+        return ResponseEntity.internalServerError().body(dtoResponse);
     }
 }
