@@ -66,6 +66,8 @@ services:
     build: ./notification
     depends_on:
       - eureka-server
+    env_file:
+      - ./notification/.env
   
   msworker:
     build:
