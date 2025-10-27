@@ -8,10 +8,10 @@
 - [ ] Resiliência - 26 a 31/10
     - [x] Configurar Notification Service para enviar e-mails
     - [x] Configurar Task Service para chamar Notification Service com Resilience4j
-    - [ ] Subir serviços com Docker Compose
-    - [ ] Testando o envio de e-mail com resiliência
-    - [ ] Monitoramento Resilience4j
-    - [ ] Monitoramento e Tracing com o que já foi configurado
+    - [x] Subir serviços com Docker Compose
+    - [x] Testando o envio de e-mail com resiliência
+    - [ ] Monitoramento Resilience4j ?
+    - [ ] Monitoramento e Tracing com o que já foi configurado ?
 - [ ] Segurança
 - [ ] Automação
 
