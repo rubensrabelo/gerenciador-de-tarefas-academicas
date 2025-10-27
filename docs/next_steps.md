@@ -5,13 +5,7 @@
 - [x] Observabilidade/logs
 - [x] Métricas e health checks (Actuator + Prometheus) - Depois eu estudo para testar
 - [x] Métricas/tracing
-- [ ] Resiliência - 26 a 31/10
-    - [x] Configurar Notification Service para enviar e-mails
-    - [x] Configurar Task Service para chamar Notification Service com Resilience4j
-    - [x] Subir serviços com Docker Compose
-    - [x] Testando o envio de e-mail com resiliência
-    - [ ] Monitoramento Resilience4j ?
-    - [ ] Monitoramento e Tracing com o que já foi configurado ?
+- [x] Resiliência - 26 a 31/10 - Não testei ainda
 - [ ] Segurança
 - [ ] Automação
 

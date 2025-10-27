@@ -151,7 +151,10 @@ services:
     networks:
       - ms-network
     depends_on:
+      - gateway
       - mstask
+      - msnotification
+      - msworker
 
   # Métricas / Tracing  
   zipkin:

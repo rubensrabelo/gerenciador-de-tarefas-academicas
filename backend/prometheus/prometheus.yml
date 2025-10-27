@@ -2,15 +2,22 @@ global:
   scrape_interval: 10s
 
 scrape_configs:
-  - job_name: 'gateway'
-    static_configs:
-      - targets: ['gateway:8080']
-      
   - job_name: 'mstask'
     metrics_path: '/actuator/prometheus'
     static_configs:
       - targets: ['mstask:8085']
 
-  - job_name: 'worker'
+  - job_name: 'msnotification'
+    metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: ['worker:8086']
+      - targets: ['msnotification:8087']
+
+  - job_name: 'msworker'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['msworker:8086']
+
+  - job_name: 'gateway'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['gateway:8080']
