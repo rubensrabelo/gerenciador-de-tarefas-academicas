@@ -6,14 +6,15 @@
 - [x] Métricas e health checks (Actuator + Prometheus) - Depois eu estudo para testar
 - [x] Métricas/tracing
 - [x] Resiliência
-- [ ] Segurança - 28 a 31/10
-    - [ ] Criar user-service (Auth + User management)
-    - [ ] Validar token no Gateway e injetar headers
-    - [ ] Ajustes no task-service (autorização e leitura de contexto)
-    - [ ] Comunicação entre serviços — token interno (opcional para MVP)
-    - [ ] Variáveis e docker-compose — exemplo resumido
-    - [ ] Testes manuais (fluxo)
-    - [ ] Considerações adicionais e próximos passos
+- [ ] Segurança
+    - [X] Adicionar o Keycloak ao seu Docker Compose
+    - [ ] Criar um Realm (Domínio de Segurança)
+    - [ ] Criar Usuários de Teste
+    - [x] Configurar o Gateway para autenticar via Keycloak
+    - [ ] Configurar os microsserviços (ex: Task Service)
+    - [ ] Testar a autenticação
+    - [ ] Propagar tokens entre serviços
+    - [ ]
 - [x] Banco isolado e migrations (Flyway)
 - [ ] Docker / docker-compose: boas práticas e healthchecks
 - [ ] CI/CD básica (GitHub Actions exemplo)
