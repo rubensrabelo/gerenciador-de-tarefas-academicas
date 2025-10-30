@@ -8,10 +8,10 @@
 - [x] Resiliência
 - [ ] Segurança
     - [X] Adicionar o Keycloak ao seu Docker Compose
-    - [ ] Criar um Realm (Domínio de Segurança)
-    - [ ] Criar Usuários de Teste
+    - [x] Criar um Realm (Domínio de Segurança)
+    - [x] Criar Usuários de Teste
     - [x] Configurar o Gateway para autenticar via Keycloak
-    - [ ] Configurar os microsserviços (ex: Task Service)
+    - [x] Configurar os microsserviços (ex: Task Service)
     - [ ] Testar a autenticação
     - [ ] Propagar tokens entre serviços
     - [ ]

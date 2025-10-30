@@ -4,7 +4,6 @@ spring:
   cloud:
     gateway:
       server:
-        webflux:
           discovery:
             locator:
               enabled: true
@@ -13,7 +12,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://keycloak:8080/realms/mstask
+          issuer-uri: http://keycloak:8080/realms/sitask
 
 server:
   port: 8080

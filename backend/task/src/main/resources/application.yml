@@ -18,6 +18,12 @@ spring:
     port: 5672
     username: admin
     password: admin
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak:8080/realms/sitask
+
 
 server:
   port: 0
