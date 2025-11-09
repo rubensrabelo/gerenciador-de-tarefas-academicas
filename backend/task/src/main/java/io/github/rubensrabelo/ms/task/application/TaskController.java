@@ -68,16 +68,16 @@ public class TaskController {
     @CircuitBreaker(name = "msnotification", fallbackMethod = "fallback")
     @Retry(name = "msnotification")
     public ResponseEntity<TaskResponseDTO> create(
-            @Valid @RequestBody TaskCreateDTO taskCreateDTO,
-            @RequestParam String email
+            @Valid @RequestBody TaskCreateDTO taskCreateDTO
+//            @RequestParam String email
     ) {
         TaskResponseDTO dto = taskService.create(taskCreateDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(dto.getId()).toUri();
-        notificationClient.send(
-                "New task created: " + dto.getTitle(),
-                email
-        );
+//        notificationClient.send(
+//                "New task created: " + dto.getTitle(),
+//                email
+//        );
         return ResponseEntity.created(uri).body(dto);
     }
 
